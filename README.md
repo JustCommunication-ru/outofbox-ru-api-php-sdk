@@ -1,6 +1,10 @@
 # Outofbox.ru API PHP SDK
 
-[![Latest Stable Version](https://poser.pugx.org/justcommunication-ru/outofbox-ru-api-php-sdk/v)](//packagist.org/packages/justcommunication-ru/outofbox-ru-api-php-sdk) [![Total Downloads](https://poser.pugx.org/justcommunication-ru/outofbox-ru-api-php-sdk/downloads)](//packagist.org/packages/justcommunication-ru/outofbox-ru-api-php-sdk) 
+[![Latest Stable Version](https://poser.pugx.org/justcommunication-ru/outofbox-ru-api-php-sdk/v)](//packagist.org/packages/justcommunication-ru/outofbox-ru-api-php-sdk)
+[![Latest Unstable Version](http://poser.pugx.org/justcommunication-ru/outofbox-ru-api-php-sdk/v/unstable)](https://packagist.org/packages/justcommunication-ru/outofbox-ru-api-php-sdk)
+[![Total Downloads](https://poser.pugx.org/justcommunication-ru/outofbox-ru-api-php-sdk/downloads)](//packagist.org/packages/justcommunication-ru/outofbox-ru-api-php-sdk)
+[![License](http://poser.pugx.org/justcommunication-ru/outofbox-ru-api-php-sdk/license)](https://packagist.org/packages/justcommunication-ru/outofbox-ru-api-php-sdk) 
+[![composer.lock](http://poser.pugx.org/justcommunication-ru/outofbox-ru-api-php-sdk/composerlock)](https://packagist.org/packages/justcommunication-ru/outofbox-ru-api-php-sdk)
 
 PHP SDK для сайтов и интернет-магазинов на платформе outofbox.ru
 
