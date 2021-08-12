@@ -17,8 +17,7 @@ $client = new OutofboxAPIClient('https://domain.ru', 'username', 'token');
 
 `email` — имя пользователя или email. Уровень доступа аккаунта должен быть не менее `Сотрудник`
 
-`token` — аутентификационный токен. 
-Токен можно получить через метод `OutofboxAPIClient::getToken($domain, $email, $password)`
+`token` — аутентификационный токен
 
 ## Методы
 
@@ -27,12 +26,12 @@ $client = new OutofboxAPIClient('https://domain.ru', 'username', 'token');
 ```php
 $client = new OutofboxAPIClient('https://domain.ru', 'username', ''); // обязательно передать пустой token
 
-$token = OutofboxAPIClient->getAuthToken('password');
+$token = OutofboxAPIClient->getAuthToken($password);
 
 var_dump($token);
 ```
 
-`password` – пароль пользователя
+`$password` – пароль пользователя
 
 ### Список позиций каталога
 
@@ -47,8 +46,6 @@ foreach ($response->getProducts() as $product) {
 
 ### Просмотр позиции каталога
 
-Каналы всех профилей на страницу которых можно добавлять сообщения (включая собственные)
-
 ```php
 $response = $client->sendProductViewRequest(ProductViewRequest::withProductID($id));
 $product = $response->getProduct();
@@ -58,13 +55,13 @@ echo $product->getTitle() . ' ' . $product->getFieldValue('Марка') . ' ' . 
 
 ## Обработка ошибок
 
-При ошибке будет сгенерировано исключение ```OutofboxAPIException```
+При ошибке будет сгенерировано исключение `OutofboxAPIException`
 
 ```php
 try {
-    $client->sendMessageCreateRequest(MessageCreateRequest::withPlainText($profile_id, $channel_id, $text));
-} catch (WiracleAPIException $e) {
-    $logger->error('Wiracle ERROR: ' . $e->getMessage());
+    $client->sendProductViewRequest(ProductViewRequest::withProductID($id));
+} catch (OutofboxAPIException $e) {
+    $logger->error('Outofbox ERROR: ' . $e->getMessage());
 }
 ```
 
