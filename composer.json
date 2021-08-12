@@ -1,7 +1,6 @@
 {
     "name": "justcommunication-ru/outofbox-ru-api-php-sdk",
     "description": "Outofbox.ru API PHP SDK",
-    "version": "1.0.0",
     "keywords": ["outofbox","outofbox.ru","api","sdk"],
     "type": "library",
     "license": "MIT",
