@@ -1,7 +1,7 @@
 <?php
 namespace Outofbox\OutofboxSDK\API;
 
-class AuthTokenResponse
+class AuthTokenResponse extends AbstractResponse
 {
     /**
      * @var string

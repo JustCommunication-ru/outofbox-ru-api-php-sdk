@@ -3,12 +3,17 @@ namespace Outofbox\OutofboxSDK\API;
 
 use Outofbox\OutofboxSDK\Model\Product;
 
-class ProductsListResponse
+class ProductsListResponse extends AbstractResponse
 {
     /**
      * @var Product[]
      */
     protected $products;
+
+    /**
+     * @var int
+     */
+    protected $products_cnt;
 
     /**
      * @var integer
@@ -23,6 +28,7 @@ class ProductsListResponse
     public function __construct($products, $count)
     {
         $this->products = $products;
+        $this->products_cnt = sizeof($products);
         $this->count = $count;
     }
 
@@ -37,8 +43,21 @@ class ProductsListResponse
     /**
      * @return int
      */
-    public function getCount()
+    public function getProductsCnt()
+    {
+        return $this->products_cnt;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalCount()
     {
         return $this->count;
+    }
+
+    public function isEmpty()
+    {
+        return $this->products_cnt === 0;
     }
 }

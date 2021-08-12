@@ -3,7 +3,7 @@ namespace Outofbox\OutofboxSDK\API;
 
 use Outofbox\OutofboxSDK\Model\Product;
 
-class ProductViewResponse
+class ProductViewResponse extends AbstractResponse
 {
     /**
      * @var Product

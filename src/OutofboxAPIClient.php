@@ -4,7 +4,6 @@ namespace Outofbox\OutofboxSDK;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use Outofbox\OutofboxSDK\API\AuthTokenRequest;
-use Outofbox\OutofboxSDK\API\AuthTokenResponse;
 use Outofbox\OutofboxSDK\API\RequestInterface;
 use Outofbox\OutofboxSDK\API\ResponseInterface;
 use Outofbox\OutofboxSDK\Exception\OutofboxAPIException;
@@ -14,7 +13,6 @@ use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
@@ -82,7 +80,6 @@ class OutofboxAPIClient implements LoggerAwareInterface
         $this->serializer = new Serializer([
             new ProductDenormalizer(),
             new ArrayDenormalizer(),
-            new DateTimeNormalizer(),
             new ObjectNormalizer(null, null, null, new PhpDocExtractor())
         ]);
     }
@@ -93,8 +90,6 @@ class OutofboxAPIClient implements LoggerAwareInterface
      * @param string $password
      * @param Client|array|null $httpClientOrOptions
      * @return string
-     *
-     * @throws OutofboxAPIException
      */
     public function getAuthToken($password, $httpClientOrOptions = null)
     {
@@ -189,6 +184,7 @@ class OutofboxAPIClient implements LoggerAwareInterface
             throw new OutofboxAPIException('Outofbox API Error: ' . $response_data['message'], $response_data['code']);
         }
 
+        /** @var ResponseInterface $response */
         $response = $this->serializer->denormalize($response_data, $apiResponseClass);
         return $response;
     }
