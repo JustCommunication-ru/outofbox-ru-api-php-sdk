@@ -44,6 +44,16 @@ class Product
     protected $barcodes;
 
     /**
+     * @var int
+     */
+    protected $reviews_cnt;
+
+    /**
+     * @var float|null
+     */
+    protected $rating_avg;
+
+    /**
      * @return int
      */
     public function getId()
@@ -184,6 +194,42 @@ class Product
     public function setBarcodes($barcodes)
     {
         $this->barcodes = $barcodes;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getReviewsCnt()
+    {
+        return $this->reviews_cnt;
+    }
+
+    /**
+     * @param int $reviews_cnt
+     * @return Product
+     */
+    public function setReviewsCnt($reviews_cnt)
+    {
+        $this->reviews_cnt = $reviews_cnt;
+        return $this;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getRatingAvg()
+    {
+        return $this->rating_avg;
+    }
+
+    /**
+     * @param float|null $rating_avg
+     * @return Product
+     */
+    public function setRatingAvg($rating_avg)
+    {
+        $this->rating_avg = $rating_avg;
         return $this;
     }
 
