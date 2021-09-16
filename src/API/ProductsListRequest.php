@@ -35,6 +35,23 @@ class ProductsListRequest extends AbstractRequest
     protected $per_page = 20;
 
     /**
+     * Image sizes
+     *
+     * @var array
+     */
+    protected $images_sizes = [
+        'small' => [
+            'fs' => 'ofb-small',
+            'filecpd' => [
+                'type' => 'custom',
+                'width' => 80,
+                'height' => 80,
+                'crop' => true
+            ]
+        ]
+    ];
+
+    /**
      * Conditions
      *
      * @var array
@@ -48,6 +65,35 @@ class ProductsListRequest extends AbstractRequest
     public function setSearch($search)
     {
         $this->search = $search;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getImagesSizes()
+    {
+        return $this->images_sizes;
+    }
+
+    /**
+     * @param array $images_sizes
+     * @return $this
+     */
+    public function setImagesSizes(array $images_sizes)
+    {
+        $this->images_sizes = $images_sizes;
+        return $this;
+    }
+
+    /**
+     * @param string $size_key
+     * @param array $size_params
+     * @return $this
+     */
+    public function addImageSize($size_key, array $size_params)
+    {
+        $this->images_sizes[$size_key] = $size_params;
         return $this;
     }
 
@@ -147,6 +193,10 @@ class ProductsListRequest extends AbstractRequest
 
         if ($this->search) {
             $query_params['search'] = $this->search;
+        }
+
+        if ($this->images_sizes) {
+            $query_params['images_modifications'] = $this->images_sizes;
         }
 
         return [

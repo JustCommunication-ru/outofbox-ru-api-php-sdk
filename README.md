@@ -40,10 +40,24 @@ var_dump($token);
 ### Список позиций каталога
 
 ```php
-$response = $client->sendProductsListRequest(new ProductsListRequest());
+
+$request = new ProductsListRequest();
+
+$request
+    ->setImagesSizes([
+        'thumbnail' => [
+            'fs' => 'ofb-320-240'
+        ]
+    ])
+;
+
+$response = $client->sendProductsListRequest($request);
 
 foreach ($response->getProducts() as $product) {
     echo $product->getTitle() . ' ' . $product->getFieldValue('Марка') . ' ' . $product->getFieldValue('Модель') . "\n";
+    if ($product->withImages()) {
+        echo $product-getImages()[0]->getUrl('thumbnail') . "\n";
+    }
 }
 
 ```
@@ -51,10 +65,20 @@ foreach ($response->getProducts() as $product) {
 ### Просмотр позиции каталога
 
 ```php
-$response = $client->sendProductViewRequest(ProductViewRequest::withProductID($id));
+$request = ProductViewRequest::withProductID($id);
+$request
+    ->addImageSize('medium', [
+        'fs' => 'ofb-640'
+    ])
+;
+
+$response = $client->sendProductViewRequest($request);
 $product = $response->getProduct();
 
 echo $product->getTitle() . ' ' . $product->getFieldValue('Марка') . ' ' . $product->getFieldValue('Модель') . "\n";
+if ($product->withImages()) {
+    echo $product-getImages()[0]->getUrl('medium') . "\n";
+}
 ```
 
 ## Обработка ошибок

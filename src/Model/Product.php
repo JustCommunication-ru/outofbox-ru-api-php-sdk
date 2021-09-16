@@ -39,6 +39,11 @@ class Product
     protected $fields_names;
 
     /**
+     * @var Image[]
+     */
+    protected $images = [];
+
+    /**
      * @var string
      */
     protected $barcodes;
@@ -177,6 +182,32 @@ class Product
     {
         $this->fields_names = $fields_names;
         return $this;
+    }
+
+    /**
+     * @return Image[]
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * @param Image[] $images
+     * @return Product
+     */
+    public function setImages($images)
+    {
+        $this->images = $images;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function withImages()
+    {
+        return sizeof($this->images) > 0;
     }
 
     /**
