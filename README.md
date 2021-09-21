@@ -81,6 +81,51 @@ if ($product->withImages()) {
 }
 ```
 
+## Список категорий товаров
+
+### Верхний уровень категорий:
+```php
+$request = new CategoriesListRequest();
+$response = $client->sendCategoriesListRequest($request);
+
+foreach ($response->getCategories() as $category) {
+    echo $category->getFullTitle(' > ') . "\n";
+}
+```
+
+### Подкатегории:
+```php
+$request = new CategoriesListRequest(123); // список категорий для подкатегории с идентификатором 123
+```
+или
+
+```php
+$request = new CategoriesListRequest();
+$request->setParentId(123);
+```
+
+```php
+$response = $client->sendCategoriesListRequest($request);
+
+foreach ($response->getCategories() as $category) {
+    echo $category->getFullTitle(' > ') . "\n";
+}
+```
+
+Важно! Данный метод не подходит для выбора всего дерева подкатегорий рекурсивными вызовами!
+Вместо этого надо использовать метод, который может вернуть сразу все дерево (@todo)
+
+## Список филиалов
+
+```php
+$request = new StoresListRequest();
+$response = $client->sendStoresListRequest($request);
+
+foreach ($response->getStores() as $store) {
+    echo $store->getName() . ' (№' . $store->getId() . ')' . "\n";
+}
+```
+
 ## Обработка ошибок
 
 При ошибке будет сгенерировано исключение `OutofboxAPIException`
