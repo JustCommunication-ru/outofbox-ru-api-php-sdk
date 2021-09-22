@@ -149,7 +149,7 @@ $response = $client->sendCreateShopOrderRequest($request);
 echo 'Заказ создан, его номер: ' . $response->getShopOrder()->getNumber();
 ```
 
-@todo: описать все 
+@todo: описать все доступные поля заказа (адреса доставки, данные клиента и т. д.)
 
 ## Обработка ошибок
 
