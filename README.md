@@ -126,6 +126,31 @@ foreach ($response->getStores() as $store) {
 }
 ```
 
+## Создание заказа/заявки
+
+```php
+$request = new CreateShopOrderRequest();
+
+$request
+    ->setPhoneNumber('89688888888') // номер телефона
+    ->setStoreId(123) // идентификатор филиала/склада
+    // состав заказа
+    ->setProducts([
+        ProductShopOrderItem::create(1271231, 1), // Позиция с id = 1271231, 1 шт.
+        ProductShopOrderItem::create(1271232, 2)  // Позиция с id = 1271232, 2 шт.
+    ])
+;
+
+// Можно добавить еще один товар в список
+$request->addProduct(ProductShopOrderItem::create(1271233, 3));
+
+$response = $client->sendCreateShopOrderRequest($request);
+
+echo 'Заказ создан, его номер: ' . $response->getShopOrder()->getNumber();
+```
+
+@todo: описать все 
+
 ## Обработка ошибок
 
 При ошибке будет сгенерировано исключение `OutofboxAPIException`

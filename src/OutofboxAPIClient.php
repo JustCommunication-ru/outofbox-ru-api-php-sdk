@@ -26,6 +26,7 @@ use Symfony\Component\Serializer\Serializer;
  * @method API\ProductViewResponse sendProductViewRequest(API\ProductViewRequest $request)
  * @method API\Categories\CategoriesListResponse sendCategoriesListRequest(API\Categories\CategoriesListRequest $request)
  * @method API\Warehouse\StoresListResponse sendStoresListRequest(API\Warehouse\StoresListRequest $request)
+ * @method API\ShopOrders\CreateShopOrderResponse sendCreateShopOrderRequest(API\ShopOrders\CreateShopOrderRequest $request)
  */
 class OutofboxAPIClient implements LoggerAwareInterface
 {
@@ -186,8 +187,13 @@ class OutofboxAPIClient implements LoggerAwareInterface
             throw new OutofboxAPIException('Outofbox API Error: ' . $response_data['message'], $response_data['code']);
         }
 
-        /** @var ResponseInterface $response */
-        $response = $this->serializer->denormalize($response_data, $apiResponseClass);
+        try {
+            /** @var ResponseInterface $response */
+            $response = $this->serializer->denormalize($response_data, $apiResponseClass);
+        } catch (\Symfony\Component\Serializer\Exception\RuntimeException $e) {
+            throw new OutofboxAPIException('Unable to decode response: ' . $e->getMessage());
+        }
+
         return $response;
     }
 
