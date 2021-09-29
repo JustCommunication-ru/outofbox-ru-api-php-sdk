@@ -42,7 +42,7 @@ class ProductsListRequest extends AbstractRequest
     /**
      * @var int[]
      */
-    protected $stock_stores = [];
+    protected $stocks = [];
 
     /**
      * Image sizes
@@ -92,18 +92,18 @@ class ProductsListRequest extends AbstractRequest
      * @param int $store_id
      * @return $this
      */
-    public function setStockStore($store_id)
+    public function setStock($store_id)
     {
-        return $this->setStockStores([ $store_id ]);
+        return $this->setStocks([ $store_id ]);
     }
 
     /**
-     * @param int[] $stock_stores
+     * @param int[] $stocks
      * @return $this
      */
-    public function setStockStores($stock_stores)
+    public function setStocks($stocks)
     {
-        $this->stock_stores = $stock_stores;
+        $this->stocks = $stocks;
         return $this;
     }
 
@@ -236,8 +236,8 @@ class ProductsListRequest extends AbstractRequest
 
         if ($this->in_stock !== null) {
             $query_params['in_stock'] = $this->in_stock;
-        } else if ($this->stock_stores) {
-            $query_params['stock'] = $this->stock_stores;
+        } else if ($this->stocks) {
+            $query_params['stock'] = $this->stocks;
         }
 
         if ($this->images_sizes) {
