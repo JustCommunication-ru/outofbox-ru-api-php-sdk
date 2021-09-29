@@ -35,6 +35,16 @@ class ProductsListRequest extends AbstractRequest
     protected $per_page = 20;
 
     /**
+     * @var bool|null
+     */
+    protected $in_stock;
+
+    /**
+     * @var int[]
+     */
+    protected $stock_stores = [];
+
+    /**
      * Image sizes
      *
      * @var array
@@ -65,6 +75,35 @@ class ProductsListRequest extends AbstractRequest
     public function setSearch($search)
     {
         $this->search = $search;
+        return $this;
+    }
+
+    /**
+     * @param bool|null $in_stock
+     * @return $this
+     */
+    public function setInStock($in_stock)
+    {
+        $this->in_stock = $in_stock;
+        return $this;
+    }
+
+    /**
+     * @param int $store_id
+     * @return $this
+     */
+    public function setStockStore($store_id)
+    {
+        return $this->setStockStores([ $store_id ]);
+    }
+
+    /**
+     * @param int[] $stock_stores
+     * @return $this
+     */
+    public function setStockStores($stock_stores)
+    {
+        $this->stock_stores = $stock_stores;
         return $this;
     }
 
@@ -193,6 +232,12 @@ class ProductsListRequest extends AbstractRequest
 
         if ($this->search) {
             $query_params['search'] = $this->search;
+        }
+
+        if ($this->in_stock !== null) {
+            $query_params['in_stock'] = $this->in_stock;
+        } else if ($this->stock_stores) {
+            $query_params['stock'] = $this->stock_stores;
         }
 
         if ($this->images_sizes) {

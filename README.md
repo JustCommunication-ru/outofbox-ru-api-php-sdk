@@ -40,7 +40,6 @@ var_dump($token);
 ### Список позиций каталога
 
 ```php
-
 $request = new ProductsListRequest();
 
 $request
@@ -59,7 +58,19 @@ foreach ($response->getProducts() as $product) {
         echo $product-getImages()[0]->getUrl('thumbnail') . "\n";
     }
 }
+```
 
+#### Наличие на складах (Если подключен Outofbox.Склад)
+
+```php
+$request = new ProductsListRequest();
+$request
+    ->setInStock(true) // только в наличии на любом складе
+    ->setInStock(false) // только НЕ в наличии на любом складе
+    
+    ->setStockStore(5643) // только в наличии в филиале с номером 5643
+    ->setStockStores([ 5643, 5644 ]) // только если позиция есть в наличии в филиалах 5643 или 5644
+;
 ```
 
 ### Просмотр позиции каталога
