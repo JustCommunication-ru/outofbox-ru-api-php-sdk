@@ -27,6 +27,7 @@ use Symfony\Component\Serializer\Serializer;
  * @method API\Categories\CategoriesListResponse sendCategoriesListRequest(API\Categories\CategoriesListRequest $request)
  * @method API\Warehouse\StoresListResponse sendStoresListRequest(API\Warehouse\StoresListRequest $request)
  * @method API\ShopOrders\CreateShopOrderResponse sendCreateShopOrderRequest(API\ShopOrders\CreateShopOrderRequest $request)
+ * @method API\Shipments\ShipmentRegisterResponse sendShipmentRegisterRequest(API\Shipments\ShipmentRegisterRequest $request)
  */
 class OutofboxAPIClient implements LoggerAwareInterface
 {

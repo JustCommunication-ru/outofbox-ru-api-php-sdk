@@ -3,7 +3,7 @@ namespace Outofbox\OutofboxSDK\API;
 
 class ProductsListRequest extends AbstractRequest
 {
-    const URI = '/_api/private/v2/products';
+    const URI = '_api/private/v2/products';
     const RESPONSE_CLASS = ProductsListResponse::class;
 
     /**
