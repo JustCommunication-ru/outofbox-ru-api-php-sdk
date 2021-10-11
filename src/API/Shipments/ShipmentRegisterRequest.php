@@ -15,6 +15,10 @@ class ShipmentRegisterRequest extends AbstractRequest
      */
     protected $shipment;
 
+    /**
+     * ShipmentRegisterRequest constructor.
+     * @param Shipment $shipment
+     */
     public function __construct(Shipment $shipment)
     {
         $this->shipment = $shipment;
@@ -24,6 +28,7 @@ class ShipmentRegisterRequest extends AbstractRequest
     {
         $form_params = [
             'title' => $this->shipment->getTitle(),
+            'receiver_phone_number' => $this->shipment->getReceiverPhoneNumber(),
             'comment' => $this->shipment->getComment(),
             'delivery_from_address' => $this->shipment->getDeliveryFromAddress(),
             'delivery_address' => $this->shipment->getDeliveryAddress()

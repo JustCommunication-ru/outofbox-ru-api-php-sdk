@@ -16,6 +16,11 @@ class Shipment
     /**
      * @var string
      */
+    protected $receiver_phone_number;
+
+    /**
+     * @var string
+     */
     protected $comment;
 
     /**
@@ -66,6 +71,24 @@ class Shipment
     public function setTitle($title)
     {
         $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReceiverPhoneNumber()
+    {
+        return $this->receiver_phone_number;
+    }
+
+    /**
+     * @param string $receiver_phone_number
+     * @return Shipment
+     */
+    public function setReceiverPhoneNumber($receiver_phone_number)
+    {
+        $this->receiver_phone_number = $receiver_phone_number;
         return $this;
     }
 
