@@ -24,6 +24,7 @@ use Symfony\Component\Serializer\Serializer;
  * @method API\AuthTokenResponse sendAuthTokenRequest(API\AuthTokenRequest $request)
  * @method API\ProductsListResponse sendProductsListRequest(API\ProductsListRequest $request)
  * @method API\ProductViewResponse sendProductViewRequest(API\ProductViewRequest $request)
+ * @method API\Products\ProductUpdateResponse sendProductUpdateRequest(API\Products\ProductUpdateRequest $request)
  * @method API\Categories\CategoriesListResponse sendCategoriesListRequest(API\Categories\CategoriesListRequest $request)
  * @method API\Warehouse\StoresListResponse sendStoresListRequest(API\Warehouse\StoresListRequest $request)
  * @method API\ShopOrders\CreateShopOrderResponse sendCreateShopOrderRequest(API\ShopOrders\CreateShopOrderRequest $request)
