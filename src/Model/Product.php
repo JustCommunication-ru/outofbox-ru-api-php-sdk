@@ -3,6 +3,10 @@ namespace Outofbox\OutofboxSDK\Model;
 
 class Product
 {
+    const STATUS_NORMAL = 'normal';
+    const STATUS_HIDDEN = 'hidden';
+    const STATUS_NOT_FOUND = 'not_found';
+
     /**
      * @var integer
      */

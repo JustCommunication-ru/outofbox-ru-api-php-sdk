@@ -14,6 +14,11 @@ class CategoriesListRequest extends AbstractRequest
     protected $parent_id;
 
     /**
+     * @var int|null
+     */
+    protected $status;
+
+    /**
      * CategoriesListRequest constructor.
      * @param null $parent_id
      */
@@ -33,6 +38,24 @@ class CategoriesListRequest extends AbstractRequest
     }
 
     /**
+     * @return int|null
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param int|null $status
+     * @return CategoriesListRequest
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
      * @inheritDoc
      */
     public function createHttpClientParams()
@@ -41,6 +64,10 @@ class CategoriesListRequest extends AbstractRequest
 
         if ($this->parent_id) {
             $query_params['parent_id'] = $this->parent_id;
+        }
+
+        if ($this->status !== null) {
+            $query_params['status'] = $this->status;
         }
 
         return [

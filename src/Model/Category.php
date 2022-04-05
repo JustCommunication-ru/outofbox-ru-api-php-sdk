@@ -3,6 +3,9 @@ namespace Outofbox\OutofboxSDK\Model;
 
 class Category
 {
+    const STATUS_NORMAL = 1;
+    const STATUS_HIDDEN = 2;
+
     /**
      * @var int
      */
@@ -27,6 +30,11 @@ class Category
      * @var array|string[]
      */
     protected $title_path;
+
+    /**
+     * @var int
+     */
+    protected $status;
 
     /**
      * @var bool
@@ -130,6 +138,29 @@ class Category
     public function getFullTitle($separator = ' / ')
     {
         return implode($separator, $this->title_path);
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param int $status
+     * @return Category
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    public function isHidden()
+    {
+        return $this->status === self::STATUS_HIDDEN;
     }
 
     /**
