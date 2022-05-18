@@ -4,9 +4,22 @@
 [![Latest Unstable Version](http://poser.pugx.org/justcommunication-ru/outofbox-ru-api-php-sdk/v/unstable)](https://packagist.org/packages/justcommunication-ru/outofbox-ru-api-php-sdk)
 [![Total Downloads](https://poser.pugx.org/justcommunication-ru/outofbox-ru-api-php-sdk/downloads)](//packagist.org/packages/justcommunication-ru/outofbox-ru-api-php-sdk)
 [![License](http://poser.pugx.org/justcommunication-ru/outofbox-ru-api-php-sdk/license)](https://packagist.org/packages/justcommunication-ru/outofbox-ru-api-php-sdk) 
-[![composer.lock](http://poser.pugx.org/justcommunication-ru/outofbox-ru-api-php-sdk/composerlock)](https://packagist.org/packages/justcommunication-ru/outofbox-ru-api-php-sdk)
 
 PHP SDK для сайтов и интернет-магазинов на платформе outofbox.ru
+
+- [Установка](#Установка)
+- [Использование](#Использование)
+- [Методы](#Методы)
+  - [Токен авторизации](#Токен авторизации)
+  - [Список позиций каталога](#Список позиций каталога)
+  - [Просмотр позиции каталога](#Просмотр позиции каталога)
+  - [Список категорий товаров](#Список категорий товаров)
+  - [Список филиалов](#Список филиалов)
+  - [Создание заказа/заявки](#Создание заказа/заявки)
+- [Обработка ошибок](#Обработка ошибок)
+- [Настройка HTTP клиента](#Настройка HTTP клиента)
+- [Логирование](#Логирование)
+- [Тесты](#Тесты)
 
 ## Установка
 
