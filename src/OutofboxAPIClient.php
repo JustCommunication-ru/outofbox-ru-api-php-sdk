@@ -23,6 +23,7 @@ use Symfony\Component\Serializer\Serializer;
  *
  * @method API\AuthTokenResponse sendAuthTokenRequest(API\AuthTokenRequest $request)
  * @method API\ProductsListResponse sendProductsListRequest(API\ProductsListRequest $request)
+ * @method API\ProductsListResponse sendContractorsProductsListRequest(API\Products\ContractorProductsListRequest $request)
  * @method API\ProductViewResponse sendProductViewRequest(API\ProductViewRequest $request)
  * @method API\Products\ProductUpdateResponse sendProductUpdateRequest(API\Products\ProductUpdateRequest $request)
  * @method API\Categories\CategoriesListResponse sendCategoriesListRequest(API\Categories\CategoriesListRequest $request)
@@ -210,20 +211,23 @@ class OutofboxAPIClient implements LoggerAwareInterface
         }
 
         $response_string = (string)$response->getBody();
-        $response_data = json_decode($response_string, true);
 
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new OutofboxAPIException('Unable to decode error response data. Error: ' . json_last_error_msg());
-        }
+        if ($response_string) {
+            $response_data = json_decode($response_string, true);
 
-        if (isset($response_data['error'])) {
-            $exception = new OutofboxAPIException($response_data['error']['message']);
-
-            if (isset($response_data['error']['code'])) {
-                $exception->setErrorCode($response_data['error']['code']);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                throw new OutofboxAPIException('Unable to decode error response data. Error: ' . json_last_error_msg());
             }
 
-            throw $exception;
+            if (isset($response_data['error'])) {
+                $exception = new OutofboxAPIException($response_data['error']['message']);
+
+                if (isset($response_data['error']['code'])) {
+                    $exception->setErrorCode($response_data['error']['code']);
+                }
+
+                throw $exception;
+            }
         }
     }
 
