@@ -43,7 +43,7 @@ $client = new OutofboxAPIClient('https://domain.ru', 'username', 'token');
 ```php
 $client = new OutofboxAPIClient('https://domain.ru', 'username', ''); // обязательно передать пустой token
 
-$token = OutofboxAPIClient->getAuthToken($password);
+$token = $client->getAuthToken($password);
 
 var_dump($token);
 ```
