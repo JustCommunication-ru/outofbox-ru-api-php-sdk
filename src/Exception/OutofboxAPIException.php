@@ -1,4 +1,5 @@
 <?php
+
 namespace Outofbox\OutofboxSDK\Exception;
 
 class OutofboxAPIException extends \Exception

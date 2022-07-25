@@ -1,4 +1,5 @@
 <?php
+
 namespace Outofbox\OutofboxSDK\API\Warehouse;
 
 use Outofbox\OutofboxSDK\API\AbstractResponse;

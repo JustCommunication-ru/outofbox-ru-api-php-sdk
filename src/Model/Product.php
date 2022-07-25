@@ -1,4 +1,5 @@
 <?php
+
 namespace Outofbox\OutofboxSDK\Model;
 
 class Product

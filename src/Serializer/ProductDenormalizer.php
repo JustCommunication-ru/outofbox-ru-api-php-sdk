@@ -1,4 +1,5 @@
 <?php
+
 namespace Outofbox\OutofboxSDK\Serializer;
 
 use Outofbox\OutofboxSDK\Model\Image;

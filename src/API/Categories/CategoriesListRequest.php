@@ -1,4 +1,5 @@
 <?php
+
 namespace Outofbox\OutofboxSDK\API\Categories;
 
 use Outofbox\OutofboxSDK\API\AbstractRequest;

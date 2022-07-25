@@ -1,4 +1,5 @@
 <?php
+
 namespace Outofbox\OutofboxSDK\API\ShopOrders;
 
 use Outofbox\OutofboxSDK\API\AbstractRequest;
@@ -24,6 +25,11 @@ class CreateShopOrderRequest extends AbstractRequest
      * @var ProductShopOrderItem[]
      */
     protected $products = [];
+
+    /**
+     * @var int
+     */
+    protected $source_id;
 
     /**
      * @return string
@@ -89,6 +95,24 @@ class CreateShopOrderRequest extends AbstractRequest
         return $this;
     }
 
+    /**
+     * @return int
+     */
+    public function getSourceId()
+    {
+        return $this->source_id;
+    }
+
+    /**
+     * @param int $source_id
+     * @return $this
+     */
+    public function setSourceId(int $source_id)
+    {
+        $this->source_id = $source_id;
+        return $this;
+    }
+
     public function createHttpClientParams()
     {
         $form_params = [];
@@ -98,6 +122,10 @@ class CreateShopOrderRequest extends AbstractRequest
 
         if ($this->store_id) {
             $form_params['store'] = $this->store_id;
+        }
+
+        if ($this->source_id) {
+            $form_params['source_id'] = $this->source_id;
         }
 
         $form_params['products'] = [];

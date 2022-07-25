@@ -1,4 +1,5 @@
 <?php
+
 namespace Outofbox\OutofboxSDK\API;
 
 class AuthTokenRequest extends AbstractRequest

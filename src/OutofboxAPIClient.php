@@ -1,4 +1,5 @@
 <?php
+
 namespace Outofbox\OutofboxSDK;
 
 use GuzzleHttp\Client;
@@ -233,11 +234,12 @@ class OutofboxAPIClient implements LoggerAwareInterface
 
     protected function generateWsseHeader()
     {
-        $nonce = hash('sha512', uniqid(true));
+        $nonce = hash('sha512', uniqid('', true));
         $created = date('c');
         $digest = base64_encode(sha1(base64_decode($nonce) . $created . $this->token, true));
 
-        return sprintf('UsernameToken Username="%s", PasswordDigest="%s", Nonce="%s", Created="%s"',
+        return sprintf(
+            'UsernameToken Username="%s", PasswordDigest="%s", Nonce="%s", Created="%s"',
             $this->username,
             $digest,
             $nonce,

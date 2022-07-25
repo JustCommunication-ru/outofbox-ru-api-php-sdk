@@ -1,4 +1,5 @@
 <?php
+
 namespace Outofbox\OutofboxSDK\API;
 
 abstract class AbstractRequest implements RequestInterface
