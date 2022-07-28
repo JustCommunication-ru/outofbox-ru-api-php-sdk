@@ -64,6 +64,11 @@ class Product
     protected $rating_avg;
 
     /**
+     * @var int[]
+     */
+    protected $stock;
+
+    /**
      * @return int
      */
     public function getId()
@@ -267,6 +272,34 @@ class Product
     {
         $this->rating_avg = $rating_avg;
         return $this;
+    }
+
+    /**
+     * @param array $stock
+     * @return $this
+     */
+    public function setStock(array $stock)
+    {
+        $this->stock = $stock;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getStock()
+    {
+        return $this->stock;
+    }
+
+    public function getStoreTotalStock()
+    {
+        if (!$this->stock) {
+            return 0;
+        }
+
+        return isset($this->stock['total']) ? $this->stock['total'] : 0;
     }
 
     /**
