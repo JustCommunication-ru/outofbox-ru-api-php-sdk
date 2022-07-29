@@ -35,9 +35,19 @@ class Shipment
     protected $delivery_address;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $barcode;
+
+    /**
+     * @var ShipmentState|null
+     */
+    public $currentState;
+
+    /**
+     * @var \DateTime|null
+     */
+    protected $stateUpdatedAt;
 
     /**
      * @return int
@@ -148,7 +158,7 @@ class Shipment
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getBarcode()
     {
@@ -156,12 +166,30 @@ class Shipment
     }
 
     /**
-     * @param string $barcode
+     * @param string|null $barcode
      * @return Shipment
      */
     public function setBarcode($barcode)
     {
         $this->barcode = $barcode;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getStateUpdatedAt()
+    {
+        return $this->stateUpdatedAt;
+    }
+
+    /**
+     * @param \DateTime|null $stateUpdatedAt
+     * @return Shipment
+     */
+    public function setStateUpdatedAt($stateUpdatedAt)
+    {
+        $this->stateUpdatedAt = $stateUpdatedAt;
         return $this;
     }
 }
