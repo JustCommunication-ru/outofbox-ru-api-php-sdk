@@ -17,7 +17,7 @@ class CreateShopOrderRequest extends AbstractRequest
     protected $phone_number;
 
     /**
-     * @var int
+     * @var int|null
      */
     protected $store_id;
 
@@ -27,9 +27,24 @@ class CreateShopOrderRequest extends AbstractRequest
     protected $products = [];
 
     /**
-     * @var int
+     * @var int|null
+     */
+    protected $city_id;
+
+    /**
+     * @var int|null
+     */
+    protected $delivery_method_id;
+
+    /**
+     * @var int|null
      */
     protected $source_id;
+
+    /**
+     * @var string|null
+     */
+    protected $comment;
 
     /**
      * @return string
@@ -96,6 +111,42 @@ class CreateShopOrderRequest extends AbstractRequest
     }
 
     /**
+     * @return int|null
+     */
+    public function getCityId()
+    {
+        return $this->city_id;
+    }
+
+    /**
+     * @param int|null $city_id
+     * @return CreateShopOrderRequest
+     */
+    public function setCityId($city_id)
+    {
+        $this->city_id = $city_id;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getDeliveryMethodId()
+    {
+        return $this->delivery_method_id;
+    }
+
+    /**
+     * @param int|null $delivery_method_id
+     * @return CreateShopOrderRequest
+     */
+    public function setDeliveryMethodId($delivery_method_id)
+    {
+        $this->delivery_method_id = $delivery_method_id;
+        return $this;
+    }
+
+    /**
      * @return int
      */
     public function getSourceId()
@@ -107,9 +158,27 @@ class CreateShopOrderRequest extends AbstractRequest
      * @param int $source_id
      * @return $this
      */
-    public function setSourceId(int $source_id)
+    public function setSourceId($source_id)
     {
         $this->source_id = $source_id;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param string|null $comment
+     * @return CreateShopOrderRequest
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
         return $this;
     }
 
@@ -120,12 +189,24 @@ class CreateShopOrderRequest extends AbstractRequest
             $form_params['phone_number'] = $this->phone_number;
         }
 
+        if ($this->city_id) {
+            $form_params['city_id'] = $this->city_id;
+        }
+
+        if ($this->delivery_method_id) {
+            $form_params['delivery_method_id'] = $this->delivery_method_id;
+        }
+
         if ($this->store_id) {
             $form_params['store'] = $this->store_id;
         }
 
         if ($this->source_id) {
             $form_params['source_id'] = $this->source_id;
+        }
+
+        if ($this->comment) {
+            $form_params['comment'] = $this->comment;
         }
 
         $form_params['products'] = [];

@@ -275,10 +275,10 @@ class Product
     }
 
     /**
-     * @param array $stock
+     * @param array|null $stock
      * @return $this
      */
-    public function setStock(array $stock)
+    public function setStock($stock)
     {
         $this->stock = $stock;
 
