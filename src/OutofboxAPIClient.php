@@ -280,7 +280,7 @@ class OutofboxAPIClient implements LoggerAwareInterface
         $httpClient = null;
         if ($httpClientOrOptions instanceof Client) {
             $httpClient = $httpClientOrOptions;
-        } else if (is_array($httpClientOrOptions)) {
+        } elseif (is_array($httpClientOrOptions)) {
             $httpClient = new Client($httpClientOrOptions);
         } else {
             $httpClient = new Client(self::$default_http_client_options);

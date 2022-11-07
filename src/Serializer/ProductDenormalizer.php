@@ -25,7 +25,7 @@ class ProductDenormalizer extends ObjectNormalizer
         foreach ($images as $image_data) {
             if ($image_data instanceof Image) {
                 $images_objects[] = $image_data;
-            } else if (is_array($image_data) && isset($image_data['path'])) {
+            } elseif (is_array($image_data) && isset($image_data['path'])) {
                 $image = new Image();
                 $image->path = $image_data['path'];
                 if (isset($image_data['modifications'])) {

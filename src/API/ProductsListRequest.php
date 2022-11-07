@@ -237,7 +237,7 @@ class ProductsListRequest extends AbstractRequest
 
         if ($this->in_stock !== null) {
             $query_params['in_stock'] = $this->in_stock;
-        } else if ($this->stocks) {
+        } elseif ($this->stocks) {
             $query_params['stock'] = $this->stocks;
         }
 

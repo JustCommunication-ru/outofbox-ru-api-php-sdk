@@ -1,15 +1,17 @@
 <?php
 namespace Tests;
 
+use GuzzleHttp\Client;
 use Outofbox\OutofboxSDK\OutofboxAPIClient;
+use PHPUnit\Framework\TestCase;
 
-class OutofboxAPIClientTest extends PHPUnit_Framework_TestCase
+class OutofboxAPIClientTest extends TestCase
 {
     public function testCallUndefinedMethod()
     {
         $client = new OutofboxAPIClient('http://user.newoutofbox.ru', 'username', 'token');
 
-        $this->expectException(BadMethodCallException::class);
+        $this->expectException(\BadMethodCallException::class);
         $client->callSomeUndefinedRequest(new \Outofbox\OutofboxSDK\API\ProductsListRequest());
     }
 
@@ -31,14 +33,14 @@ class OutofboxAPIClientTest extends PHPUnit_Framework_TestCase
 
     public function testCreateHttpClientWithCustomHttpClient()
     {
-        $httpClient = new \GuzzleHttp\Client([
+        $httpClient = new Client([
             'timeout' => 15
         ]);
 
         $client = new OutofboxAPIClient('http://user.newoutofbox.ru', 'username', 'token', $httpClient);
         $this->assertEquals(15, $client->getHttpClient()->getConfig('timeout'));
 
-        $httpClient = new \GuzzleHttp\Client([
+        $httpClient = new Client([
             'timeout' => 25
         ]);
 
