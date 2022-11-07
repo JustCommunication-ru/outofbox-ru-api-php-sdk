@@ -15,7 +15,9 @@ PHP SDK для сайтов и интернет-магазинов на плат
   - [Просмотр позиции каталога](#просмотр-позиции-каталога)
   - [Список категорий товаров](#список-категорий-товаров)
   - [Список филиалов](#список-филиалов)
-  - [Создание заказа/заявки](#создание-заказазаявки)
+  - [Заказы/Заявки](#заказызаявки)
+    - [Создание заказа/заявки](#создание-заказазаявки)
+    - [Информация о заказе/заявке](#информация-о-заказезаявке)
 - [Обработка ошибок](#обработка-ошибок)
 - [Настройка HTTP клиента](#настройка-http-клиента)
 - [Логирование](#логирование)
@@ -150,7 +152,12 @@ foreach ($response->getStores() as $store) {
 }
 ```
 
-## Создание заказа/заявки
+## Заказы/Заявки
+
+- [Создание заказа/заявки](#создание-заказазаявки)
+- [Информация о заказе/заявке](#информация-о-заказезаявке)
+
+### Создание заказа/заявки
 
 ```php
 $request = new CreateShopOrderRequest();
@@ -174,6 +181,51 @@ echo 'Заказ создан, его номер: ' . $response->getShopOrder()-
 ```
 
 @todo: описать все доступные поля заказа (адреса доставки, данные клиента и т. д.)
+
+### Информация о заказе/заявке
+
+```php
+use Outofbox\OutofboxSDK\API\ShopOrders\GetShopOrderRequest;
+use Outofbox\OutofboxSDK\OutofboxAPIClient;
+
+$client = new OutofboxAPIClient($domain, $username, $api_token);
+
+$request = new GetShopOrderRequest();
+$request->setOrderNumber('8189-071122');
+
+$response = $client->sendGetShopOrderRequest($request);
+
+$shopOrder = $response->getShopOrder();
+
+$shopOrder->number; // номер заказа
+
+if ($shopOrder->status) {
+    $shopOrder->status->id; // идентификатор статуса заказа
+    $shopOrder->status->value; // наименование статуса заказа
+} else {
+    // статус "Новый"
+}
+
+if ($shopOrder->deliveryMethod) {
+    $shopOrder->deliveryMethod->id; // идентификатор способа доставки
+    $shopOrder->deliveryMethod->value; // наименование способа доставки
+}
+
+if ($shopOrder->paymentMethod) {
+    $shopOrder->paymentMethod->id; // идентификатор способа оплаты
+    $shopOrder->paymentMethod->value; // наименование способа оплаты
+}
+
+// позиции заказа
+foreach ($shopOrder->items as $shopOrderItem) {
+    $shopOrderItem->id; // идентификатор позиции
+    $shopOrderItem->title; // наименование позиции
+    $shopOrderItem->price; // стоимость единицы позиции
+    $shopOrderItem->quantity; // количество
+    $shopOrderItem->amount; // общая стоимость
+    $shopOrderItem->item_weight; // вес одной позиции
+}
+```
 
 ## Обработка ошибок
 

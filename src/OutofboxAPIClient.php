@@ -10,6 +10,7 @@ use Outofbox\OutofboxSDK\API\ResponseInterface;
 use Outofbox\OutofboxSDK\Exception\OutofboxAPIException;
 use Outofbox\OutofboxSDK\Serializer\ProductDenormalizer;
 use Outofbox\OutofboxSDK\Serializer\ShipmentDenormalizer;
+use Outofbox\OutofboxSDK\Serializer\ShopOrderDenormalizer;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
@@ -31,6 +32,7 @@ use Symfony\Component\Serializer\Serializer;
  * @method API\Categories\CategoriesListResponse sendCategoriesListRequest(API\Categories\CategoriesListRequest $request)
  * @method API\Warehouse\StoresListResponse sendStoresListRequest(API\Warehouse\StoresListRequest $request)
  * @method API\ShopOrders\CreateShopOrderResponse sendCreateShopOrderRequest(API\ShopOrders\CreateShopOrderRequest $request)
+ * @method API\ShopOrders\GetShopOrderResponse sendGetShopOrderRequest(API\ShopOrders\GetShopOrderRequest $request)
  * @method API\Shipments\ShipmentRegisterResponse sendShipmentRegisterRequest(API\Shipments\ShipmentRegisterRequest $request)
  * @method API\Shipments\ShipmentByBarcodeResponse sendShipmentByBarcodeRequest(API\Shipments\ShipmentByBarcodeRequest $request)
  */
@@ -89,6 +91,7 @@ class OutofboxAPIClient implements LoggerAwareInterface
         $this->serializer = new Serializer([
             new ProductDenormalizer(),
             new ShipmentDenormalizer(),
+            new ShopOrderDenormalizer(),
             new ArrayDenormalizer(),
             new ObjectNormalizer(null, null, null, new PhpDocExtractor())
         ]);

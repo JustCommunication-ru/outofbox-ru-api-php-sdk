@@ -1,4 +1,6 @@
 <?php
+namespace Tests;
+
 use Outofbox\OutofboxSDK\OutofboxAPIClient;
 
 class OutofboxAPIClientTest extends PHPUnit_Framework_TestCase

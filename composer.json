@@ -18,6 +18,13 @@
         "phpstan/phpstan": "^1.8"
     },
     "autoload": {
-        "psr-4": {"Outofbox\\OutofboxSDK\\": "src/"}
+        "psr-4": {
+            "Outofbox\\OutofboxSDK\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
     }
 }
