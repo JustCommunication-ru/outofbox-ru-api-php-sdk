@@ -207,6 +207,7 @@ $response = $client->sendGetShopOrderRequest($request);
 $shopOrder = $response->getShopOrder();
 
 $shopOrder->number; // номер заказа
+$shopOrder->delivery_price; // стоимость доставки
 
 if ($shopOrder->status) {
     $shopOrder->status->id; // идентификатор статуса заказа

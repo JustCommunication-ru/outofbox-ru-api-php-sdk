@@ -30,6 +30,11 @@ class ShopOrder
     public $paymentMethod;
 
     /**
+     * @var int|float|null
+     */
+    public $delivery_price;
+
+    /**
      * @return string
      */
     public function getNumber()
@@ -67,5 +72,13 @@ class ShopOrder
     public function getItems()
     {
         return $this->items;
+    }
+
+    /**
+     * @return float|int|null
+     */
+    public function getDeliveryPrice()
+    {
+        return $this->delivery_price;
     }
 }
