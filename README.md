@@ -199,12 +199,16 @@ use Outofbox\OutofboxSDK\OutofboxAPIClient;
 
 $client = new OutofboxAPIClient($domain, $username, $api_token);
 
+// через объект запроса
 $request = new GetShopOrderRequest();
 $request->setOrderNumber('8189-071122');
 
 $response = $client->sendGetShopOrderRequest($request);
 
 $shopOrder = $response->getShopOrder();
+
+// либо короче
+$shopOrder = $client->getShopOrder('8189-071122');
 
 $shopOrder->number; // номер заказа
 $shopOrder->delivery_price; // стоимость доставки

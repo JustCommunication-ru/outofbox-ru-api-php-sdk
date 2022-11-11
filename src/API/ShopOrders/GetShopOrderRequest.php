@@ -16,6 +16,17 @@ class GetShopOrderRequest extends AbstractRequest
     protected $order_number;
 
     /**
+     * @param string $order_number
+     * @return GetShopOrderRequest
+     */
+    public static function createWithShopOrderNumber($order_number)
+    {
+        $self = new self();
+        $self->setOrderNumber($order_number);
+        return $self;
+    }
+
+    /**
      * @return string
      */
     public function getOrderNumber()

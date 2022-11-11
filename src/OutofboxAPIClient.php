@@ -7,6 +7,7 @@ use GuzzleHttp\Psr7\Response;
 use Outofbox\OutofboxSDK\API\AuthTokenRequest;
 use Outofbox\OutofboxSDK\API\RequestInterface;
 use Outofbox\OutofboxSDK\API\ResponseInterface;
+use Outofbox\OutofboxSDK\API\ShopOrders\GetShopOrderRequest;
 use Outofbox\OutofboxSDK\Exception\OutofboxAPIException;
 use Outofbox\OutofboxSDK\Serializer\ProductDenormalizer;
 use Outofbox\OutofboxSDK\Serializer\ShipmentDenormalizer;
@@ -108,6 +109,17 @@ class OutofboxAPIClient implements LoggerAwareInterface
     {
         $response = $this->sendAuthTokenRequest(new AuthTokenRequest($this->username, $password));
         return $response->getToken();
+    }
+
+    /**
+     * @param string $order_number
+     * @return Model\ShopOrder
+     *
+     * @throws OutofboxAPIException
+     */
+    public function getShopOrder($order_number)
+    {
+        return $this->sendGetShopOrderRequest(GetShopOrderRequest::createWithShopOrderNumber($order_number))->getShopOrder();
     }
 
     public function __call($name, array $arguments)
