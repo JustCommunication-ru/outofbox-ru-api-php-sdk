@@ -30,7 +30,7 @@ class ShopOrderItem
     public $quantity;
 
     /**
-     * @var float
+     * @var float|null
      */
     public $item_weight;
 }

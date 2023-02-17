@@ -30,7 +30,7 @@ PHP SDK для сайтов и интернет-магазинов на плат
 ## Использование
 
 ```php
-$client = new OutofboxAPIClient('https://domain.ru', 'username', 'token');
+$client = new OutofboxAPIClient('https://domain.ru', 'email', 'token');
 ```
 `https://domain.ru` – домен вашего сайта на платформе outofbox.ru
 

@@ -40,7 +40,7 @@ class ShopOrderDenormalizer extends ObjectNormalizer implements DenormalizerAwar
             if ($shopOrderItem instanceof ShopOrderItem) {
                 $items[] = $shopOrderItem;
             } elseif (is_array($shopOrderItem)) {
-                $items[] = $this->denormalizer->denormalize($shopOrderItem, ShopOrderItem::class);
+                $items[] = $this->denormalizer->denormalize($shopOrderItem, ShopOrderItem::class, 'json');
             } else {
                 $items[] = null;
             }
