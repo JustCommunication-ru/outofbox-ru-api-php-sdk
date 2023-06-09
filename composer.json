@@ -10,7 +10,8 @@
         "symfony/serializer": "*",
         "symfony/property-access": "*",
         "symfony/property-info": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "phpdocumentor/reflection-docblock": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
