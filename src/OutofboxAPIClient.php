@@ -33,6 +33,7 @@ use Symfony\Component\Serializer\Serializer;
  * @method API\Products\ProductsCreateBatchResponse sendProductCreateBatchRequest(API\Products\ProductsCreateBatchRequest $request)
  * @method API\Categories\CategoriesListResponse sendCategoriesListRequest(API\Categories\CategoriesListRequest $request)
  * @method API\Warehouse\StoresListResponse sendStoresListRequest(API\Warehouse\StoresListRequest $request)
+ * @method API\Warehouse\Warehouse3\IncomeResponse sendWarehouse3IncomeRequest(API\Warehouse\Warehouse3\IncomeRequest $request)
  * @method API\ShopOrders\CreateShopOrderResponse sendCreateShopOrderRequest(API\ShopOrders\CreateShopOrderRequest $request)
  * @method API\ShopOrders\GetShopOrderResponse sendGetShopOrderRequest(API\ShopOrders\GetShopOrderRequest $request)
  * @method API\Shipments\ShipmentRegisterResponse sendShipmentRegisterRequest(API\Shipments\ShipmentRegisterRequest $request)
@@ -209,6 +210,8 @@ class OutofboxAPIClient implements LoggerAwareInterface
         if (isset($response_data['code'], $response_data['message'])) {
             throw new OutofboxAPIException('Outofbox API Error: ' . $response_data['message'], $response_data['code']);
         }
+
+        print_r($response_data);
 
         try {
             /** @var ResponseInterface $response */
