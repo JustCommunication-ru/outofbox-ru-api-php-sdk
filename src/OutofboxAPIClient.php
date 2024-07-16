@@ -30,6 +30,7 @@ use Symfony\Component\Serializer\Serializer;
  * @method API\ProductsListResponse sendContractorsProductsListRequest(API\Products\ContractorProductsListRequest $request)
  * @method API\ProductViewResponse sendProductViewRequest(API\ProductViewRequest $request)
  * @method API\Products\ProductUpdateResponse sendProductUpdateRequest(API\Products\ProductUpdateRequest $request)
+ * @method API\Products\ProductsCreateBatchResponse sendProductCreateBatchRequest(API\Products\ProductsCreateBatchRequest $request)
  * @method API\Categories\CategoriesListResponse sendCategoriesListRequest(API\Categories\CategoriesListRequest $request)
  * @method API\Warehouse\StoresListResponse sendStoresListRequest(API\Warehouse\StoresListRequest $request)
  * @method API\ShopOrders\CreateShopOrderResponse sendCreateShopOrderRequest(API\ShopOrders\CreateShopOrderRequest $request)
