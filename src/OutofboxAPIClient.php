@@ -211,8 +211,6 @@ class OutofboxAPIClient implements LoggerAwareInterface
             throw new OutofboxAPIException('Outofbox API Error: ' . $response_data['message'], $response_data['code']);
         }
 
-        print_r($response_data);
-
         try {
             /** @var ResponseInterface $response */
             $response = $this->serializer->denormalize($response_data, $apiResponseClass);
