@@ -60,13 +60,13 @@ class IncomeRequest extends AbstractRequest
                 'barcode' => $item->item->barcode
             ];
 
-            if ($item->item->change) {
-                $product_item_struct['change'] = [
-                    'comment' => $item->item->change->comment
+            $item_struct['item'] = $product_item_struct;
+
+            if ($item->change) {
+                $item_struct['change'] = [
+                    'comment' => $item->change->comment
                 ];
             }
-
-            $item_struct['item'] = $product_item_struct;
 
             $form_params['items'][$item_key] = $item_struct;
         }

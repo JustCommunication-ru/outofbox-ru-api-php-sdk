@@ -2,7 +2,7 @@
 
 namespace Outofbox\OutofboxSDK\API\Warehouse\Warehouse3;
 
-class ProductItemIncomeChangeDTO
+class IncomeChangeDTO
 {
     public ?string $comment = null;
 }
